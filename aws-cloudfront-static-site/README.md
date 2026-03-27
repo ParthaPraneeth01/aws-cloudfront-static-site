@@ -142,5 +142,6 @@ Edit → Upload → Invalidate Cache → Live
 
 ## 👨‍💻 Author
 
-**Praneeth**
+**P. Partha Praneeth Reddy**
+##
 DevOps Enthusiast
