@@ -1,52 +1,49 @@
-# 🚀 Production-Ready Static Website on AWS (S3 + CloudFront)
+# 🚀 AWS CloudFront + S3 Static Website (Production Setup)
+
+## 🌐 Live Demo
+
+👉 https://d1p2cy658iuykh.cloudfront.net
+
+---
 
 ## 📌 Overview
 
-This project demonstrates a **production-grade static website deployment** using AWS services with a focus on **security, scalability, and performance**.
+This project demonstrates a **secure and scalable static website deployment** using AWS.
 
 The architecture ensures:
 
-* No public access to storage (S3 is private)
-* Secure content delivery via CloudFront CDN
-* Low-latency global access
+* Private storage (S3 not publicly accessible)
+* Secure delivery via CloudFront CDN
+* Low latency global performance
 * Proper DevOps deployment workflow
 
 ---
 
 ## 🧠 Architecture
 
-```
-User (Browser)
-      ↓ HTTPS
-CloudFront (CDN)
-      ↓ OAC (Secure Access)
-S3 Bucket (Private)
-      ↓
-IAM Policies (Access Control)
+```text
+User → CloudFront (CDN) → Private S3 Bucket → IAM Policies
 ```
 
 ---
 
 ## ⚙️ Tech Stack
 
-| Service                     | Purpose                                 |
-| --------------------------- | --------------------------------------- |
-| AWS S3                      | Stores static website files (HTML, CSS) |
-| CloudFront                  | CDN for fast global delivery            |
-| OAC (Origin Access Control) | Restricts direct S3 access              |
-| IAM                         | Secure permission management            |
-| VS Code                     | Development                             |
-| GitHub                      | Code + proof of deployment              |
+* AWS S3 (Private Storage)
+* AWS CloudFront (CDN)
+* Origin Access Control (OAC)
+* IAM (Access Management)
+* GitHub (Code Hosting)
 
 ---
 
-## 🔐 Security Features
+## 🔐 Security Implementation
 
-* ✅ S3 bucket is **completely private**
-* ✅ Public access is **blocked**
-* ✅ Only CloudFront can access S3 (via OAC)
-* ✅ HTTPS enforced using CloudFront
-* ❌ No direct S3 URL access (returns 403)
+* S3 bucket configured as **private**
+* Public access completely blocked
+* CloudFront allowed via OAC only
+* Direct S3 access returns **403 Forbidden**
+* HTTPS enforced using CloudFront
 
 ---
 
@@ -55,9 +52,9 @@ IAM Policies (Access Control)
 ### 1. Create S3 Bucket
 
 * Block all public access
-* Upload `index.html`
+* Upload website files (`index.html`)
 
-### 2. Create CloudFront Distribution
+### 2. Configure CloudFront
 
 * Connect S3 as origin
 * Enable private access (OAC)
@@ -69,16 +66,14 @@ IAM Policies (Access Control)
 
 ### 3. Access Website
 
-```
-https://<cloudfront-domain>.cloudfront.net
-```
+* Use CloudFront distribution URL
 
 ---
 
-## 🔄 Updating Website (DevOps Flow)
+## 🔄 Update Workflow (DevOps)
 
-```
-Edit code → Upload to S3 → Invalidate CloudFront → Live
+```text
+Edit → Upload → Invalidate Cache → Live
 ```
 
 ### Steps:
@@ -100,7 +95,7 @@ Edit code → Upload to S3 → Invalidate CloudFront → Live
 
 ![S3](screenshots/s3-bucket.png)
 
-### Uploaded File
+### File Uploaded
 
 ![Upload](screenshots/upload.png)
 
@@ -114,59 +109,38 @@ Edit code → Upload to S3 → Invalidate CloudFront → Live
 
 ---
 
-## 🌐 Live Demo
-
-👉 https://<your-cloudfront-url>
-
----
-
 ## 💡 Key Learnings
 
-* How CDN caching works
-* Difference between public vs private storage
-* Secure architecture design using OAC
-* Real-world deployment workflow
-* Cache invalidation importance
+* CDN caching and invalidation
+* Secure architecture using private storage
+* Difference between public vs private access
+* Real-world deployment flow
+* Cloud-based hosting fundamentals
 
 ---
 
-## ⚠️ Common Issues & Fixes
+## ⚠️ Common Issues
 
 ### Access Denied
 
 * Fix: Set default root object → `index.html`
 
-### Changes not reflecting
+### Changes not visible
 
 * Fix: Create CloudFront invalidation (`/*`)
 
 ---
 
-## 🎯 Why This Project Matters
+## 🎯 Project Highlights
 
-This is NOT a basic hosting project.
-
-It demonstrates:
-
-* ✔ Real DevOps workflow
-* ✔ Cloud architecture understanding
-* ✔ Security best practices
-* ✔ Production-ready mindset
-
----
-
-## 🔥 Future Improvements
-
-* CI/CD using GitHub Actions
-* Custom domain with Route53
-* HTTPS certificate (ACM)
-* Docker-based deployment
+* Production-style architecture (not basic hosting)
+* Secure by design (no public S3 exposure)
+* Uses CDN for performance optimization
+* Demonstrates DevOps deployment workflow
 
 ---
 
 ## 👨‍💻 Author
 
-**Partha Praneeth Reddy **
-DevOps Enthusiast | Cloud Learner
-
----
+**Praneeth**
+DevOps Enthusiast
